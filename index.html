@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prueba Tecnica DiegoContrerasMuñoz</title>
+        <link rel="stylesheet" href="index.css">
+        
+    </head>
+    <body>
+        <div class="container">
+            <aside class="sidebar">
+                <h2>Asistente IA</h2>
+                <button>+ Nuevo Chat</button>
+                <div class="conversations">
+                    <ul id="conversation-list" style="list-style:none; padding:0; margin:10px 0 0 0;">
+                        <!-- Las conversaciones aparecerán aquí -->
+                    </ul>
+                </div>
+                <div class="profile">
+                    <img id="user-avatar" src="https://avatars.githubusercontent.com/u/12345678?v=4" alt="Avatar" class="avatar">
+                    <div id="google-login-btn"></div> <!-- Aquí Google pone el botón -->
+                    <button id="logout">Cerrar Sesión</button>
+                </div>
+            </aside>
+            <aside class="sidebar2">
+                <div class="menuHamburgesa"></div>
+            </aside>
+            <main class="main">
+                <div class="welcome">
+                    <h1>¡Bienvenido a tu Asistente de IA!</h1>
+                    <p>Si quieres guardar las conversaciones debes iniciar sesión.</p>
+                </div>
+                <div class="chat-box" id="chat-box">
+                    <p class="thinking"></p>
+                    <!-- Mensajes del chat aparecerán aquí -->
+                </div>
+                <form class="input-bar">
+                    <input type="text" placeholder="Escribe tu mensaje aquí..." />
+
+                    <!-- Input de archivo oculto -->
+                    <input type="file" id="knowledge-file" accept=".txt,.csv" style="display:none;">
+
+                    <!-- Botón para abrir el selector -->
+                    <button type="button" id="upload-knowledge">Subir Documento</button>
+
+                    <!-- Botón de enviar mensaje -->
+                    <button type="submit">Enviar</button>
+                </form>
+
+            </main>
+        </div>
+        <script src="index.js"></script>
+        <script src="botones.js"></script>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+    </body>
+</html>
