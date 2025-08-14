@@ -122,14 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let isLoading = false; // 🔹 Estado para saber si está esperando respuesta
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
         const userMessage = input.value.trim();
-        if (!userMessage) return;
+        if (!userMessage || isLoading) return; // ⛔ No envía si está vacío o ya esperando
+
+        isLoading = true; // ⛔ Bloquear nuevos envíos
+        input.disabled = true; // 🔹 Bloquear el input
+        thinking.textContent = "Pensando...";
 
         if (!currentChatId) createNewChat();
-
-        thinking.textContent = "Pensando...";
 
         try {
             const res = await fetch(`${API_BASE_URL}/chat`, {
@@ -172,8 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         input.value = "";
+        input.disabled = false; // 🔓 Habilitar input otra vez
+        isLoading = false; // 🔓 Permitir nuevos envíos
     });
-
     conversationList.addEventListener("click", (e) => {
         if (e.target.tagName === "LI") {
             setActiveChat(e.target.dataset.chatId);
